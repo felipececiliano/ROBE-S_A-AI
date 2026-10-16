@@ -1,0 +1,1653 @@
+/* RESET & PALETA DE CORES LIMPA SEM GRADIENTE FANTASMA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-dark: #0A0512;
+    --bg-card: #140B24;
+    --bg-card-hover: #1F1138;
+    --purple-accent: #8B5CF6;
+    
+    /* Amarelo Claro e Vibrante */
+    --yellow-light: #FDE047;
+    --yellow-bright: #FFE55C;
+    --yellow-hover: #EAB308;
+    --yellow-glow: rgba(253, 224, 71, 0.3);
+
+    --text-main: #F9FAFB;
+    --text-muted: #A1A1AA;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-active: #FDE047;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- TELA INICIAL --- */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.welcome-content {
+    max-width: 400px;
+    width: 100%;
+    background: var(--bg-card);
+    padding: 32px 24px;
+    border-radius: 20px;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.welcome-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-bowl-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--yellow-light);
+    box-shadow: 0 0 20px var(--yellow-glow);
+}
+
+.bowl-icon {
+    font-size: 2.2rem;
+    color: var(--yellow-light);
+    z-index: 2;
+}
+
+.welcome-brand h1 {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: var(--yellow-light);
+}
+
+.welcome-subtitle {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: -4px;
+}
+
+/* INPUTS MINIMALISTAS E SELECT */
+.customer-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.clean-input-group {
+    position: relative;
+    text-align: left;
+}
+
+.clean-input-group input, 
+.clean-input-group select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-light);
+    padding: 8px 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.clean-input-group select option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+}
+
+.clean-input-group input:focus,
+.clean-input-group select:focus {
+    border-color: var(--yellow-light);
+}
+
+.clean-input-group label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--yellow-light);
+    font-weight: 700;
+    display: block;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+}
+
+/* --- BOTÕES --- */
+.btn-yellow {
+    background: var(--yellow-light);
+    color: #08030F;
+    font-weight: 800;
+    font-size: 0.98rem;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.btn-yellow:hover:not(:disabled) {
+    background: var(--yellow-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--yellow-glow);
+}
+
+.btn-yellow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-light);
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-outline:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--yellow-light);
+    color: var(--yellow-light);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.main-app {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-area i {
+    font-size: 1.4rem;
+    color: var(--yellow-light);
+}
+
+.logo-area h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--yellow-light);
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 20px;
+}
+
+@media (max-width: 880px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- PASSOS DE MONTAGEM --- */
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.menu-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-num {
+    background: var(--purple-accent);
+    color: #FFF;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+/* TAB CATEGORIAS */
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.tab-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-light);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: var(--purple-accent);
+    color: #FFF;
+    border-color: var(--purple-accent);
+}
+
+/* GRID DE OPÇÕES */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.option-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.option-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(253, 224, 71, 0.5);
+    transform: translateY(-2px);
+}
+
+.option-card.selected {
+    border-color: var(--border-active);
+    background: rgba(253, 224, 71, 0.08);
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.card-price {
+    font-size: 0.88rem;
+    color: var(--yellow-light);
+    font-weight: 800;
+}
+
+.card-limit {
+    font-size: 0.72rem;
+    color: var(--yellow-light);
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+.check-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    background: var(--yellow-light);
+    color: #08030F;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+}
+
+.option-card.selected .check-badge {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- CARD RESUMO DA ENTREGA --- */
+.order-summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 12px;
+}
+
+.summary-header h3 {
+    font-size: 1.05rem;
+    color: var(--yellow-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#item-count-badge {
+    background: rgba(139, 92, 246, 0.2);
+    color: #A78BFA;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.customer-info-preview {
+    background: var(--bg-dark);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.customer-info-preview strong {
+    color: var(--text-main);
+}
+
+.summary-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.summary-item-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.summary-item-row.placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.summary-divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 2px 0;
+}
+
+.addons-list-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.summary-addons-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.summary-addons-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.empty-addons {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.82rem;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding-top: 4px;
+}
+
+.total-value {
+    color: var(--yellow-light);
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+/* --- MODAL CONFIRMAÇÃO --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(8, 3, 15, 0.9);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 28px 24px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: var(--yellow-light);
+}
+
+.modal-content h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.order-number-box {
+    background: var(--bg-dark);
+    border: 1px dashed var(--yellow-light);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.order-number-box .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+.order-number-box .number {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--yellow-light);
+    word-break: break-all;
+}
+
+.modal-details {
+    background: var(--bg-dark);
+    padding: 12px;
+    border-radius: Analisando a imagem, dá para perceber exatamente o motivo do problema![cite: 1] 
+
+Na classe `.welcome-screen`, o CSS está configurado para ocupar **`100vh`** com um gradiente e estar com **`z-index: 1000`** e **`position: fixed`**. Como o círculo de brilho central está muito forte e cobrindo a tela toda (e a div `.welcome-content` não apareceu no centro), o conteúdo está invisível ou sobreposto.
+
+Para resolver isso, vamos:
+1. Reajustar o gradiente do fundo para não clarear o centro excessivamente.
+2. Garantir que a `.welcome-content` tenha **`position: relative; z-index: 2;`** e fique perfeitamente centralizada.
+3. Unificar o arquivo para funcionar sem erros.
+
+Substitua todo o código do seu `index.html` por este abaixo:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robe's Açaís - Monte o seu!</title>
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    
+    <style>
+        /* RESET & VARIAVEIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-dark: #08030F;
+            --bg-card: #120822;
+            --bg-card-hover: #1D0E36;
+            --purple-accent: #8B5CF6;
+            --purple-glow: rgba(139, 92, 246, 0.25);
+            
+            --yellow-light: #FDE047;
+            --yellow-bright: #FFE55C;
+            --yellow-hover: #EAB308;
+            --yellow-glow: rgba(253, 224, 71, 0.35);
+
+            --text-main: #F9FAFB;
+            --text-muted: #A1A1AA;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --border-active: #FDE047;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- TELA INICIAL (CORRIGIDA) --- */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1E0C3A 0%, var(--bg-dark) 85%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            max-width: 400px;
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(253, 224, 71, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .welcome-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .welcome-bowl-container {
+            position: relative;
+            width: 85px;
+            height: 85px;
+            background: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--yellow-light);
+            box-shadow: 0 0 20px var(--yellow-glow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .bowl-icon {
+            font-size: 2.4rem;
+            color: var(--yellow-light);
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .welcome-brand h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--yellow-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* FORMULÁRIO CLEAN */
+        .customer-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .clean-input-group {
+            text-align: left;
+        }
+
+        .clean-input-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--yellow-light);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .clean-input-group input, 
+        .clean-input-group select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--border-light);
+            padding: 8px 0;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .clean-input-group select option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .clean-input-group input:focus,
+        .clean-input-group select:focus {
+            border-color: var(--yellow-light);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+        }
+
+        /* BOTÕES */
+        .btn-yellow {
+            background: linear-gradient(135deg, var(--yellow-bright) 0%, var(--yellow-light) 100%);
+            color: #08030F;
+            font-weight: 800;
+            font-size: 0.98rem;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 6px;
+            box-shadow: 0 6px 20px var(--yellow-glow);
+        }
+
+        .btn-yellow:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(253, 224, 71, 0.5);
+        }
+
+        .btn-yellow:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--yellow-light);
+            color: var(--yellow-light);
+        }
+
+        /* --- LAYOUT PRINCIPAL --- */
+        .main-app {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-area i {
+            font-size: 1.4rem;
+            color: var(--yellow-light);
+        }
+
+        .logo-area h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--yellow-light);
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+        }
+
+        @media (max-width: 880px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .menu-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .menu-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-num {
+            background: var(--purple-accent);
+            color: #FFF;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--purple-accent);
+            color: #FFF;
+            border-color: var(--purple-accent);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 14px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .option-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(253, 224, 71, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .option-card.selected {
+            border-color: var(--border-active);
+            background: rgba(253, 224, 71, 0.08);
+            box-shadow: 0 0 15px var(--yellow-glow);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        .card-price {
+            font-size: 0.88rem;
+            color: var(--yellow-light);
+            font-weight: 800;
+        }
+
+        .card-limit {
+            font-size: 0.72rem;
+            color: var(--yellow-light);
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        .check-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 18px;
+            height: 18px;
+            background: var(--yellow-light);
+            color: #08030F;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease;
+        }
+
+        .option-card.selected .check-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* RESUMO */
+        .order-summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
+        }
+
+        .summary-header h3 {
+            font-size: 1.05rem;
+            color: var(--yellow-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #item-count-badge {
+            background: rgba(139, 92, 246, 0.2);
+            color: #A78BFA;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .customer-info-preview {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .customer-info-preview strong {
+            color: var(--text-main);
+        }
+
+        .summary-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        .summary-item-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .summary-item-row.placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: var(--border-light);
+            margin: 2px 0;
+        }
+
+        .addons-list-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .summary-addons-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .summary-addons-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .empty-addons {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.82rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding-top: 4px;
+        }
+
+        .total-value {
+            color: var(--yellow-light);
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(8, 3, 15, 0.9);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 28px 24px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: var(--yellow-light);
+        }
+
+        .modal-content h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .order-number-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--yellow-light);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .order-number-box .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .order-number-box .number {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--yellow-light);
+            word-break: break-all;
+        }
+
+        .modal-details {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .modal-details strong {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TELA DE DADOS DO CLIENTE -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-brand">
+                <div class="welcome-bowl-container">
+                    <i class="fa-solid fa-bowl-food bowl-icon"></i>
+                </div>
+                <h1>Robe's Açaís</h1>
+            </div>
+
+            <p class="welcome-subtitle">Preencha os dados de entrega para continuar:</p>
+            
+            <form id="customer-form" class="customer-form">
+                <div class="clean-input-group">
+                    <label for="client-name">Nome Completo *</label>
+                    <input type="text" id="client-name" placeholder="Digite seu nome" required autocomplete="off">
+                </div>
+
+                <div class="clean-input-group">
+                    <label for="client-phone">Telefone (com DDD) *</label>
+                    <input type="tel" id="client-phone" placeholder="(00) 00000-0000" required autocomplete="off">
+                </div>
+
+                <div class="clean-input-group">
+                    <label for="client-neighborhood">Bairro de Entrega *</label>
+                    <select id="client-neighborhood" required>
+                        <option value="" disabled selected>Selecione seu bairro</option>
+                        <option value="Centro">Centro (Taxa R$ 5,00)</option>
+                        <option value="Partenope">Partenope (Taxa R$ 10,00)</option>
+                        <option value="Cercadinho">Cercadinho (Taxa R$ 10,00)</option>
+                        <option value="Itaqui">Itaqui (Taxa R$ 10,00)</option>
+                        <option value="Ouro Verde">Ouro Verde (Taxa R$ 10,00)</option>
+                        <option value="Vila Bancária">Vila Bancária (Taxa R$ 10,00)</option>
+                        <option value="Lagoa">Lagoa (Taxa R$ 10,00)</option>
+                        <option value="Rondinha">Rondinha (Taxa R$ 10,00)</option>
+                    </select>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="clean-input-group">
+                        <label for="client-street">Rua / Logradouro *</label>
+                        <input type="text" id="client-street" placeholder="Ex: Rua Barão do Rio Branco" required autocomplete="off">
+                    </div>
+                    <div class="clean-input-group">
+                        <label for="client-number">Número *</label>
+                        <input type="text" id="client-number" placeholder="Ex: 123" required autocomplete="off">
+                    </div>
+                </div>
+
+                <button type="submit" id="start-btn" class="btn-yellow">
+                    <span><i class="fa-solid fa-bolt"></i> INICIAR MEU PEDIDO</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TELA PRINCIPAL DE MONTAGEM -->
+    <div id="main-app" class="main-app hidden">
+        <header class="app-header">
+            <div class="logo-area">
+                <i class="fa-solid fa-bowl-food"></i>
+                <h2>Robe's Açaís</h2>
+            </div>
+            <button id="back-home-btn" class="btn-outline">
+                <i class="fa-solid fa-arrow-left"></i> Alterar Dados
+            </button>
+        </header>
+
+        <div class="app-container">
+            <div class="steps-container">
+                <!-- ETAPA 1: TAMANHO -->
+                <section class="menu-section">
+                    <h3><span class="step-num">1</span> Escolha o Copo / Tamanho</h3>
+                    <div id="sizes-grid" class="options-grid"></div>
+                </section>
+
+                <!-- ETAPA 2: ADICIONAIS -->
+                <section class="menu-section">
+                    <h3><span class="step-num">2</span> Escolha os Adicionais</h3>
+                    <div class="category-tabs">
+                        <button class="tab-btn active" data-category="all">Todos</button>
+                        <button class="tab-btn" data-category="acompanhamento">Acompanhamentos</button>
+                        <button class="tab-btn" data-category="fruta">Frutas</button>
+                        <button class="tab-btn" data-category="calda">Caldas / Cremes</button>
+                    </div>
+                    <div id="addons-grid" class="options-grid"></div>
+                </section>
+            </div>
+
+            <!-- RESUMO DO PEDIDO -->
+            <aside class="order-summary-card">
+                <div class="summary-header">
+                    <h3><i class="fa-solid fa-receipt"></i> Resumo do Pedido</h3>
+                    <span id="item-count-badge">0 itens</span>
+                </div>
+
+                <div class="customer-info-preview">
+                    <p><strong>Cliente:</strong> <span id="preview-name">-</span></p>
+                    <p><strong>Tel:</strong> <span id="preview-phone">-</span></p>
+                    <p><strong>Bairro:</strong> <span id="preview-neighborhood">-</span></p>
+                    <p><strong>Endereço:</strong> <span id="preview-address">-</span></p>
+                </div>
+
+                <div class="summary-body">
+                    <div id="selected-size-display" class="summary-item-row placeholder">
+                        <span>Nenhum copo selecionado</span>
+                        <span class="price">R$ 0,00</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="addons-list-title">Adicionais:</div>
+                    <ul id="selected-addons-list" class="summary-addons-list">
+                        <li class="empty-addons">Nenhum adicional escolhido</li>
+                    </ul>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-item-row">
+                        <span>Taxa de Entrega:</span>
+                        <span id="delivery-fee-display" class="price">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <div class="summary-footer">
+                    <div class="total-row">
+                        <span>Total a Pagar:</span>
+                        <span id="grand-total" class="total-value">R$ 0,00</span>
+                    </div>
+                    <button id="finalize-btn" class="btn-yellow full-width" disabled>
+                        <span><i class="fa-solid fa-check"></i> CONFIRMAR E ENVIAR PEDIDO</span>
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO DO PEDIDO -->
+    <div id="modal-success" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Pedido Confirmado!</h2>
+            <p style="font-size:0.9rem; color:var(--text-muted);">Seu pedido foi registrado para entrega do motoboy:</p>
+            
+            <div class="order-number-box">
+                <span class="label">CLIENTE / ENTREGA</span>
+                <span id="display-order-name" class="number">Nome</span>
+            </div>
+
+            <div class="modal-details" id="modal-order-summary-text"></div>
+
+            <button id="new-order-btn" class="btn-yellow">
+                <span><i class="fa-solid fa-rotate-right"></i> FAZER NOVO PEDIDO</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const sizesData = [
+            { id: 's1', name: 'Copo 300ml', price: 10.00, maxAddons: 2 },
+            { id: 's2', name: 'Copo 500ml', price: 14.00, maxAddons: 4 },
+            { id: 's3', name: 'Copo 700ml', price: 18.00, maxAddons: null },
+            { id: 's4', name: 'Copo 1 Litro', price: 24.00, maxAddons: null }
+        ];
+
+        const addonsData = [
+            { id: 'a1', name: 'Leite em Pó', price: 2.00, category: 'acompanhamento' },
+            { id: 'a2', name: 'Granola', price: 1.50, category: 'acompanhamento' },
+            { id: 'a3', name: 'Paçoca', price: 2.00, category: 'acompanhamento' },
+            { id: 'a4', name: 'Castanha Caju', price: 3.00, category: 'acompanhamento' },
+            { id: 'a5', name: 'Castanha Pará', price: 3.50, category: 'acompanhamento' },
+            { id: 'a6', name: 'Gotas Chocolate', price: 2.50, category: 'acompanhamento' },
+            { id: 'a7', name: 'Bis Picado', price: 3.00, category: 'acompanhamento' },
+            { id: 'a8', name: 'Chocoball', price: 2.00, category: 'acompanhamento' },
+            { id: 'a9', name: 'Sucrilhos', price: 1.50, category: 'acompanhamento' },
+            { id: 'a10', name: 'Farinha Láctea', price: 2.00, category: 'acompanhamento' },
+            { id: 'a11', name: 'Ovetto / Ovalmaltine', price: 3.00, category: 'acompanhamento' },
+            { id: 'a12', name: 'Amendoim Torrado', price: 2.00, category: 'acompanhamento' },
+
+            { id: 'f1', name: 'Banana', price: 2.00, category: 'fruta' },
+            { id: 'f2', name: 'Morango', price: 3.00, category: 'fruta' },
+            { id: 'f3', name: 'Kiwi em Rodelas', price: 3.50, category: 'fruta' },
+            { id: 'f4', name: 'Manga em Cubos', price: 2.50, category: 'fruta' },
+            { id: 'f5', name: 'Abacaxi Picado', price: 2.50, category: 'fruta' },
+            { id: 'f6', name: 'Uva Sem Semente', price: 3.50, category: 'fruta' },
+
+            { id: 'c1', name: 'Leite Condensado', price: 1.50, category: 'calda' },
+            { id: 'c2', name: 'Calda Chocolate', price: 1.50, category: 'calda' },
+            { id: 'c3', name: 'Nutella / Avelã', price: 3.50, category: 'calda' },
+            { id: 'c4', name: 'Creme de Ninho', price: 3.50, category: 'calda' },
+            { id: 'c5', name: 'Doce de Leite', price: 2.50, category: 'calda' },
+            { id: 'c6', name: 'Mel Puro', price: 2.00, category: 'calda' },
+            { id: 'c7', name: 'Calda de Morango', price: 1.50, category: 'calda' },
+            { id: 'c8', name: 'Creme de Cupuaçu', price: 3.50, category: 'calda' }
+        ];
+
+        let currentCustomer = {
+            name: '',
+            phone: '',
+            neighborhood: '',
+            street: '',
+            number: '',
+            deliveryFee: 10.00
+        };
+
+        let currentOrder = {
+            size: null,
+            addons: []
+        };
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainApp = document.getElementById('main-app');
+        const customerForm = document.getElementById('customer-form');
+        const backHomeBtn = document.getElementById('back-home-btn');
+
+        const sizesGrid = document.getElementById('sizes-grid');
+        const addonsGrid = document.getElementById('addons-grid');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+
+        const previewName = document.getElementById('preview-name');
+        const previewPhone = document.getElementById('preview-phone');
+        const previewNeighborhood = document.getElementById('preview-neighborhood');
+        const previewAddress = document.getElementById('preview-address');
+
+        const selectedSizeDisplay = document.getElementById('selected-size-display');
+        const selectedAddonsList = document.getElementById('selected-addons-list');
+        const deliveryFeeDisplay = document.getElementById('delivery-fee-display');
+        const itemCountBadge = document.getElementById('item-count-badge');
+        const grandTotalEl = document.getElementById('grand-total');
+        const finalizeBtn = document.getElementById('finalize-btn');
+
+        const modalSuccess = document.getElementById('modal-success');
+        const newOrderBtn = document.getElementById('new-order-btn');
+        const displayOrderName = document.getElementById('display-order-name');
+        const modalOrderSummaryText = document.getElementById('modal-order-summary-text');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSizes();
+            renderAddons('all');
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            customerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('client-name').value.trim();
+                const phone = document.getElementById('client-phone').value.trim();
+                const neighborhoodSelect = document.getElementById('client-neighborhood');
+                const neighborhood = neighborhoodSelect.value;
+                const street = document.getElementById('client-street').value.trim();
+                const number = document.getElementById('client-number').value.trim();
+
+                if (!name || !phone || !neighborhood || !street || !number) {
+                    alert('Por favor, preencha todos os campos do formulário para entrega!');
+                    return;
+                }
+
+                const isCentro = neighborhood === 'Centro';
+                const deliveryFee = isCentro ? 5.00 : 10.00;
+
+                currentCustomer = { name, phone, neighborhood, street, number, deliveryFee };
+
+                previewName.textContent = currentCustomer.name;
+                previewPhone.textContent = currentCustomer.phone;
+                previewNeighborhood.textContent = `${currentCustomer.neighborhood} (${isCentro ? 'Taxa Centro' : 'Taxa Padrão'})`;
+                previewAddress.textContent = `${currentCustomer.street}, Nº ${currentCustomer.number}`;
+
+                welcomeScreen.classList.add('hidden');
+                mainApp.classList.remove('hidden');
+
+                updateSummary();
+            });
+
+            backHomeBtn.addEventListener('click', () => {
+                mainApp.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
+            });
+
+            finalizeBtn.addEventListener('click', finishOrder);
+
+            newOrderBtn.addEventListener('click', () => {
+                modalSuccess.classList.add('hidden');
+                clearOrder();
+                customerForm.reset();
+                mainApp.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
+            });
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderAddons(e.target.dataset.category);
+                });
+            });
+        }
+
+        function renderSizes() {
+            sizesGrid.innerHTML = sizesData.map(size => `
+                <div class="option-card ${currentOrder.size?.id === size.id ? 'selected' : ''}" onclick="selectSize('${size.id}')">
+                    <span class="check-badge">✓</span>
+                    <div class="card-title">${size.name}</div>
+                    <div class="card-price">R$ ${size.price.toFixed(2).replace('.', ',')}</div>
+                    ${size.maxAddons ? `<div class="card-limit">(Máx. ${size.maxAddons} adic.)</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function renderAddons(category) {
+            const filtered = category === 'all' 
+                ? addonsData 
+                : addonsData.filter(item => item.category === category);
+
+            addonsGrid.innerHTML = filtered.map(addon => {
+                const isSelected = currentOrder.addons.some(item => item.id === addon.id);
+                return `
+                    <div class="option-card ${isSelected ? 'selected' : ''}" onclick="toggleAddon('${addon.id}')">
+                        <span class="check-badge">✓</span>
+                        <div class="card-title">${addon.name}</div>
+                        <div class="card-price">+ R$ ${addon.price.toFixed(2).replace('.', ',')}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectSize(sizeId) {
+            const newSize = sizesData.find(s => s.id === sizeId);
+            
+            if (newSize.maxAddons && currentOrder.addons.length > newSize.maxAddons) {
+                currentOrder.addons = currentOrder.addons.slice(0, newSize.maxAddons);
+                alert(`O ${newSize.name} permite no máximo ${newSize.maxAddons} adicionais.`);
+            }
+
+            currentOrder.size = newSize;
+            renderSizes();
+            renderAddons(document.querySelector('.tab-btn.active')?.dataset.category || 'all');
+            updateSummary();
+        }
+
+        function toggleAddon(addonId) {
+            if (!currentOrder.size) {
+                alert('Escolha o tamanho do copo antes de selecionar os adicionais!');
+                return;
+            }
+
+            const addon = addonsData.find(a => a.id === addonId);
+            const index = currentOrder.addons.findIndex(a => a.id === addonId);
+
+            if (index > -1) {
+                currentOrder.addons.splice(index, 1);
+            } else {
+                const maxAllowed = currentOrder.size.maxAddons;
+                if (maxAllowed !== null && currentOrder.addons.length >= maxAllowed) {
+                    alert(`Para o ${currentOrder.size.name}, o limite máximo é de ${maxAllowed} adicionais.`);
+                    return;
+                }
+                currentOrder.addons.push(addon);
+            }
+
+            const activeCategory = document.querySelector('.tab-btn.active').dataset.category;
+            renderAddons(activeCategory);
+            updateSummary();
+        }
+
+        function updateSummary() {
+            if (currentOrder.size) {
+                selectedSizeDisplay.className = 'summary-item-row';
+                selectedSizeDisplay.innerHTML = `
+                    <span>${currentOrder.size.name}</span>
+                    <span class="price" style="color:var(--yellow-light); font-weight:700;">R$ ${currentOrder.size.price.toFixed(2).replace('.', ',')}</span>
+                `;
+            } else {
+                selectedSizeDisplay.className = 'summary-item-row placeholder';
+                selectedSizeDisplay.innerHTML = `
+                    <span>Nenhum copo selecionado</span>
+                    <span class="price">R$ 0,00</span>
+                `;
+            }
+
+            if (currentOrder.addons.length > 0) {
+                selectedAddonsList.innerHTML = currentOrder.addons.map(addon => `
+                    <li>
+                        <span>+ ${addon.name}</span>
+                        <span class="price" style="color:var(--yellow-light);">+ R$ ${addon.price.toFixed(2).replace('.', ',')}</span>
+                    </li>
+                `).join('');
+            } else {
+                selectedAddonsList.innerHTML = `<li class="empty-addons">Nenhum adicional escolhido</li>`;
+            }
+
+            deliveryFeeDisplay.textContent = `R$ ${currentCustomer.deliveryFee.toFixed(2).replace('.', ',')}`;
+
+            const totalItemsCount = (currentOrder.size ? 1 : 0) + currentOrder.addons.length;
+            itemCountBadge.textContent = `${totalItemsCount} ${totalItemsCount === 1 ? 'item' : 'itens'}`;
+
+            const sizePrice = currentOrder.size ? currentOrder.size.price : 0;
+            const addonsPrice = currentOrder.addons.reduce((sum, item) => sum + item.price, 0);
+            const grandTotal = sizePrice + addonsPrice + currentCustomer.deliveryFee;
+
+            grandTotalEl.textContent = `R$ ${grandTotal.toFixed(2).replace('.', ',')}`;
+            finalizeBtn.disabled = !currentOrder.size;
+        }
+
+        function finishOrder() {
+            displayOrderName.textContent = currentCustomer.name.toUpperCase();
+
+            let summaryText = `<strong>Tel:</strong> ${currentCustomer.phone}<br>`;
+            summaryText += `<strong>Endereço:</strong> ${currentCustomer.street}, Nº ${currentCustomer.number}<br>`;
+            summaryText += `<strong>Bairro:</strong> ${currentCustomer.neighborhood}<br>`;
+            summaryText += `<strong>Copo:</strong> ${currentOrder.size.name}<br>`;
+            if (currentOrder.addons.length > 0) {
+                summaryText += `<strong>Adicionais:</strong> ${currentOrder.addons.map(a => a.name).join(', ')}<br>`;
+            }
+            summaryText += `<strong>Taxa Entrega:</strong> R$ ${currentCustomer.deliveryFee.toFixed(2).replace('.', ',')}<br>`;
+            summaryText += `<strong>TOTAL A COBRAR:</strong> ${grandTotalEl.textContent}`;
+
+            modalOrderSummaryText.innerHTML = summaryText;
+            modalSuccess.classList.remove('hidden');
+        }
+
+        function clearOrder() {
+            currentOrder = { size: null, addons: [] };
+            renderSizes();
+            renderAddons('all');
+            updateSummary();
+        }
+    </script>
+</body>
+</html>
